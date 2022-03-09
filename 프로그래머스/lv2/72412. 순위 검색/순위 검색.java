@@ -30,13 +30,6 @@ class Solution {
             if(num <= list.get(mid)){
                 s = mid+1;
             }
-            else if(num == list.get(mid)){
-                while(list.get(mid) == num){
-                    mid++;
-                }
-                s = mid;
-                break;
-            }
             else{
                 e = mid-1;
             }
@@ -72,5 +65,4 @@ class Solution {
             map.get(str).add(Integer.valueOf(sarr[4]));
         }
     }
-    
 }
