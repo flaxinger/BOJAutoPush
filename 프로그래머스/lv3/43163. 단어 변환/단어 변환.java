@@ -3,21 +3,20 @@ class Solution {
     
     private int ans, N, WN;
     private boolean[][] graph, vs;
-    private int begin, target;
+    private int begin;
+    private String target;
+    private String[] words;
     
     public int solution(String begin, String target, String[] words) {
         
         List<String> wTemp = new ArrayList<>();
-        int bT=0, tT=0;
+        int bT=0;
         for(String w: words){
-            if(w.equals(target))
-                tT = 1;
             if(w.equals(begin))
                 bT = 1;
             wTemp.add(w);
         }        
         if(bT == 0) wTemp.add(begin);
-        if(tT == 0) wTemp.add(target);
         words = wTemp.toArray(new String[wTemp.size()]);
         
         this.ans = Integer.MAX_VALUE;
@@ -25,8 +24,9 @@ class Solution {
         this.WN = words[0].length();
         this.graph = new boolean[N][N];
         this.vs = new boolean[N][N];
+        this.words = words;
+        this.target = target;
 
-        
         for(int i = 0;i < N; i++){
             for(int j = 0; j < N; j++){
                 if(dist(words[i], words[j]) == 1){
@@ -34,9 +34,6 @@ class Solution {
                 }
                 if(words[i].equals(begin)){
                     this.begin = i;
-                }
-                if(words[i].equals(target)){
-                    this.target = i;
                 }
             }
         }
@@ -57,7 +54,7 @@ class Solution {
     
     private void dfs(int node, int steps){
         if(steps == N) return;
-        if(node == target){
+        if(words[node].equals(target)){
             ans = Math.min(ans, steps);
             return;
         }
