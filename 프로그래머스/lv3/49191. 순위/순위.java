@@ -18,7 +18,7 @@ class Solution {
             for(int j = 1; j <= N; j++){
                 if(i == j || board[i][j] != NONE) continue; // board[j][i]는 유추할 수 있어 생략
                 for(int k = 1; k <= N; k++){
-                    if(i == k || j == k || board[i][k] == NONE || board[i][j] != NONE) continue;
+                    if(i == k || j == k || board[i][k] == NONE) continue;
                     if(board[i][k] == board[k][j]){
                         if(board[i][k] == WIN){
                             board[i][j] = WIN;
@@ -30,6 +30,7 @@ class Solution {
                         }
                         trueCount[i]++;
                         trueCount[j]++;
+                        break;
                     }
                 }
             }
