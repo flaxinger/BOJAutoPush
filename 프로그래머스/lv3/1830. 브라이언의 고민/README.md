@@ -1,10 +1,10 @@
 # [level 3] 브라이언의 고민 - 1830 
 
-[문제 링크](https://programmers.co.kr/learn/courses/30/lessons/1830#) 
+[문제 링크](https://programmers.co.kr/learn/courses/30/lessons/1830) 
 
 ### 성능 요약
 
-메모리: 96.5 MB, 시간: 36.11 ms
+메모리: 98.6 MB, 시간: 37.24 ms
 
 ### 구분
 

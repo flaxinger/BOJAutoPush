@@ -170,4 +170,5 @@ class Solution {
         return false;
       return list.get(list.size()-1).equals(IV);
     }
+    
 }
