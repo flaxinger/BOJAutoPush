@@ -24,8 +24,8 @@ fun solve(){
 	for(i in 1 until N){
 		cur = candidates.toIntArray()
 		candidates.clear()
-		for(j in 0 until N){
-			for(c in cur){
+		for(c in cur){
+			for(j in 0 until N){
 				if(c and (1 shl j) == 0){
 					dp[i][c or (1 shl j)] = Math.min(
 						dp[i][c or (1 shl j)],
@@ -48,3 +48,6 @@ fun solve(){
 fun main(){
 	solve()
 }
+
+
+
