@@ -35,12 +35,8 @@ fun solve(){
 				}
 			}
 		}
-	}
-	var ans = MAX
-	for(candidate in candidates){
-		ans = Math.min(ans, dp[N-1][candidate])
-	}
-	println(ans)
+	}	
+	println(dp[N-1][M-1])
 }
 
 fun main(){
