@@ -27,7 +27,6 @@ fun main()= with(BufferedReader(InputStreamReader(System.`in`))){
 }
 
 
-// finds the minimum for four logical base cases
 fun solve(X: Int, Y: Int, board: Array<BooleanArray>, vs: IntArray, dp: Array<Array<MutableMap<Int, Int>>>): Int {
 	return traverse(Point(0,0), X, Y, board, vs, dp)
 }
@@ -36,10 +35,7 @@ fun traverse(p: Point, X: Int, Y: Int, board: Array<BooleanArray>, vs: IntArray,
 	if(p.x == X) return 0
 	var state = vs[p.x]
 	if(p.x>0){
-		for(i in 0 until Y){
-			if(vs[p.x-1].used(i))
-				state = state.use(Y+i)
-		}
+		state = state or vs[p.x-1] shl Y
 	}
 	if(dp[p.x][p.y].containsKey(state))
 		return dp[p.x][p.y][state]!!
