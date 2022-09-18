@@ -1,3 +1,4 @@
+
 /*
 	kotlinc main.kt -include-runtime -d main.jar && java -Xmx1024M -Xms256M -jar main.jar
 */
