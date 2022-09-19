@@ -21,8 +21,10 @@ fun main()= with(BufferedReader(InputStreamReader(System.`in`))){
         val (a, b, c) = readLine().split(" ")
         when(a){
             "1" -> {
-                addTree(tree, b.toInt(), c.toLong() - arr[b.toInt()] )
-                arr[b.toInt()] = c.toLong()
+                val idx = b.toInt()
+                val num = c.toLong()
+                addTree(tree, idx, num - arr[idx] )
+                arr[idx] = num
             }
             "2" -> {
                 sb.append("${findPartialSum(tree, b.toInt()-1, c.toInt())}\n")
@@ -60,10 +62,4 @@ fun findPartialSum(tree: LongArray, _e: Int): Long{
         e -= (e and -e)
     }
     return ans
-}
-
-fun LongArray.swap(x: Int, y: Int){
-    val tmp = this[x]
-    this[x] = this[y]
-    this[y] = tmp
 }
