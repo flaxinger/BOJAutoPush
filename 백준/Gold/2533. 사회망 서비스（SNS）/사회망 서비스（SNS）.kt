@@ -9,18 +9,16 @@ import java.util.Arrays
 
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     val N = readLine()!!.toInt()
-    val map = mutableMapOf<Int, MutableList<Int>>()
+    val map = Array(N+1){ mutableListOf<Int>()}
     repeat(N-1){
         val (E, T) = readLine()!!.split(" ").map{it.toInt()}
-        map.putIfAbsent(E, mutableListOf())
-        map[E]!!.add(T)
-        map.putIfAbsent(T, mutableListOf())
-        map[T]!!.add(E)
+        map[E].add(T)
+        map[T].add(E)
     }
     println(solve(map, 1, N))
 }
 
-fun solve(map: MutableMap<Int, MutableList<Int>>, root: Int, NodeCount: Int): Int{
+fun solve(map: Array<MutableList<Int>>, root: Int, NodeCount: Int): Int{
 
     val vs = BooleanArray(NodeCount+1){false}
     val dp = Array(NodeCount+1){DP()}
@@ -29,19 +27,17 @@ fun solve(map: MutableMap<Int, MutableList<Int>>, root: Int, NodeCount: Int): In
 }
 
 fun traverse(
-    map: MutableMap<Int, MutableList<Int>>,
+    map: Array<MutableList<Int>>,
     node: Int,
     mapDP: Array<DP>,
     vs: BooleanArray
 ) {
     vs[node] = true
-    if(map.containsKey(node)){
-        for(child in map[node]!!){
-            if(!vs[child]) {
-                traverse(map, child, mapDP, vs)
-                mapDP[node].influencer += Math.min(mapDP[child].banal, mapDP[child].influencer)
-                mapDP[node].banal += mapDP[child].influencer
-            }
+    for(child in map[node]!!){
+        if(!vs[child]) {
+            traverse(map, child, mapDP, vs)
+            mapDP[node].influencer += Math.min(mapDP[child].banal, mapDP[child].influencer)
+            mapDP[node].banal += mapDP[child].influencer
         }
     }
 }
